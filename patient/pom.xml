@@ -14,7 +14,7 @@
 
 	<groupId>com.sa.healntrack</groupId>
 	<artifactId>patient</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<name>patient</name>
 	<description>Healntrack patient microservice</description>
 
