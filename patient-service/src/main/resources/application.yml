@@ -1,0 +1,20 @@
+spring:
+  config:
+    import:
+      - optional:file:.env[.properties]
+  application:
+    name: patient-service
+  datasource:
+    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:patient_db}
+    username: ${DB_USER:postgres}
+    password: ${DB_PASS:12345}
+
+server:
+  port: ${PORT:8001}
+
+eureka:
+  instance:
+    lease-renewal-interval-in-seconds: 15
+  client:
+    service-url:
+      defaultZone: http://${EUREKA_HOST:localhost}:${EUREKA_PORT:8761}/eureka/
