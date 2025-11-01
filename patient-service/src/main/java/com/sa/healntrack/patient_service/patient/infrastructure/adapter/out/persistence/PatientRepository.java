@@ -16,7 +16,7 @@ import com.sa.healntrack.patient_service.patient.application.port.out.persistenc
 import com.sa.healntrack.patient_service.patient.application.port.out.persistence.SavePatient;
 import com.sa.healntrack.patient_service.patient.domain.Patient;
 import com.sa.healntrack.patient_service.patient.infrastructure.adapter.out.persistence.entity.PatientEntity;
-import com.sa.healntrack.patient_service.patient.infrastructure.adapter.out.persistence.mapper.PatientEntityMapper;
+import com.sa.healntrack.patient_service.patient.infrastructure.adapter.out.persistence.mapper.PatientPersistenceMapper;
 import com.sa.healntrack.patient_service.patient.infrastructure.adapter.out.persistence.repository.PatientEntityRepository;
 import com.sa.healntrack.patient_service.patient.infrastructure.adapter.out.persistence.specification.PatientSpecs;
 
@@ -27,7 +27,7 @@ import lombok.RequiredArgsConstructor;
 public class PatientRepository implements SavePatient, ExistsPatientByCui, FindPatientById, FindAllPatients {
 
     private final PatientEntityRepository repository;
-    private final PatientEntityMapper mapper;
+    private final PatientPersistenceMapper mapper;
 
     @Transactional(propagation = Propagation.MANDATORY)
     @Override

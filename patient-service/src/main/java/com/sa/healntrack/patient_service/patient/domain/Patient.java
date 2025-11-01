@@ -3,12 +3,13 @@ package com.sa.healntrack.patient_service.patient.domain;
 import java.time.LocalDate;
 import java.util.UUID;
 
-import com.sa.healntrack.patient_service.patient.domain.value_objects.CUI;
-import com.sa.healntrack.patient_service.patient.domain.value_objects.Email;
-import com.sa.healntrack.patient_service.patient.domain.value_objects.FullName;
-import com.sa.healntrack.patient_service.patient.domain.value_objects.PatientGender;
-import com.sa.healntrack.patient_service.patient.domain.value_objects.PatientId;
-import com.sa.healntrack.patient_service.patient.domain.value_objects.PhoneNumber;
+import com.sa.healntrack.patient_service.patient.domain.value_object.Address;
+import com.sa.healntrack.patient_service.patient.domain.value_object.CUI;
+import com.sa.healntrack.patient_service.patient.domain.value_object.Email;
+import com.sa.healntrack.patient_service.patient.domain.value_object.FullName;
+import com.sa.healntrack.patient_service.patient.domain.value_object.PatientGender;
+import com.sa.healntrack.patient_service.patient.domain.value_object.PatientId;
+import com.sa.healntrack.patient_service.patient.domain.value_object.PhoneNumber;
 
 import lombok.Getter;
 
@@ -20,7 +21,7 @@ public class Patient {
     private final FullName fullName;
     private final LocalDate birthDate;
     private final PatientGender gender;
-    private final String address;
+    private final Address address;
     private final Email email;
     private final PhoneNumber phoneNumber;
     private final PhoneNumber emergencyPhoneNumber;
@@ -32,7 +33,7 @@ public class Patient {
         this.fullName = new FullName(fullName);
         this.birthDate = birthDate;
         this.gender = PatientGender.fromString(gender);
-        this.address = address;
+        this.address = new Address(address);
         this.email = new Email(email);
         this.phoneNumber = new PhoneNumber(phoneNumber);
         this.emergencyPhoneNumber = new PhoneNumber(emergencyPhoneNumber);

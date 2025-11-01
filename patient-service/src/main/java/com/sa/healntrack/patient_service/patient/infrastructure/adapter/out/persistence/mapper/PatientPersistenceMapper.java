@@ -7,13 +7,14 @@ import com.sa.healntrack.patient_service.patient.domain.Patient;
 import com.sa.healntrack.patient_service.patient.infrastructure.adapter.out.persistence.entity.PatientEntity;
 
 @Mapper(componentModel = "spring")
-public interface PatientEntityMapper {
+public interface PatientPersistenceMapper {
 
     Patient toDomain(PatientEntity entity);
 
     @Mapping(target = "id", source = "patient.id.value")
     @Mapping(target = "cui", source = "patient.cui.value")
     @Mapping(target = "fullName", source = "patient.fullName.value")
+    @Mapping(target = "address", source = "patient.address.value")
     @Mapping(target = "email", source = "patient.email.value")
     @Mapping(target = "phoneNumber", source = "patient.phoneNumber.value")
     @Mapping(target = "emergencyPhoneNumber", source = "patient.emergencyPhoneNumber.value")

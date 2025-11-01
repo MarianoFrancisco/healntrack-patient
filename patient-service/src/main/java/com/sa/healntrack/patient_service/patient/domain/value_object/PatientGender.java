@@ -1,4 +1,4 @@
-package com.sa.healntrack.patient_service.patient.domain.value_objects;
+package com.sa.healntrack.patient_service.patient.domain.value_object;
 
 public enum PatientGender {
     MALE,

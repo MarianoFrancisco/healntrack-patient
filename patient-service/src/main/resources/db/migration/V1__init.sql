@@ -17,10 +17,10 @@ create table consultation (
     patient_id uuid not null,
     doctor_id uuid not null,
     date date not null,
+    reason text not null,
     diagnosis text not null,
     treatment text,
-    notes text,
-    fee numeric(10,2) not null,
+    total_fee numeric(10,2) not null,
     created_at timestamp not null,
     updated_at timestamp not null,
     constraint fk_patient foreign key(patient_id) references patient(id)
