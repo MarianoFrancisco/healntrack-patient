@@ -7,6 +7,8 @@ import java.util.UUID;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import com.sa.healntrack.patient_service.patient.domain.value_object.Gender;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -30,7 +32,7 @@ public class PatientEntity {
     private String fullName;
     private LocalDate birthDate;
     @Enumerated(EnumType.STRING)
-    private PatientEntityGender gender;
+    private Gender gender;
     private String address;
     private String email;
     private String phoneNumber;

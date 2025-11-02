@@ -2,6 +2,7 @@ package com.sa.healntrack.patient_service.patient.infrastructure.adapter.out.per
 
 import org.springframework.data.jpa.domain.Specification;
 
+import com.sa.healntrack.patient_service.patient.domain.value_object.Gender;
 import com.sa.healntrack.patient_service.patient.infrastructure.adapter.out.persistence.entity.PatientEntity;
 
 public class PatientSpecs {
@@ -20,6 +21,12 @@ public class PatientSpecs {
                 : criteriaBuilder.like(
                         root.get("cui"),
                         "%" + cui + "%");
+    }
+
+    public static Specification<PatientEntity> hasGender(Gender gender) {
+        return (root, query, criteriaBuilder) -> (gender == null)
+                ? null
+                : criteriaBuilder.equal(root.get("gender"), gender);
     }
 
 }

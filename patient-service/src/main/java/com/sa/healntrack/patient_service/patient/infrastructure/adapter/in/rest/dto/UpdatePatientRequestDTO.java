@@ -1,5 +1,6 @@
 package com.sa.healntrack.patient_service.patient.infrastructure.adapter.in.rest.dto;
 
+import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 
 public record UpdatePatientRequestDTO(
@@ -7,6 +8,7 @@ public record UpdatePatientRequestDTO(
     @Size(max = 150, message = "El nombre no debe superar los {max} caracteres")
     String fullName,
 
+    @Pattern(regexp = "MALE|FEMALE|OTHER", message = "El genero solo puede ser MALE, FEMALE u OTHER")
     String gender,
 
     String address,

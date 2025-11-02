@@ -40,7 +40,7 @@ public class PatientController {
     private final GetPatientById getPatientById;
 
     @GetMapping
-    public ResponseEntity<List<PatientResponseDTO>> getAll(SearchPatientsRequestDTO requestDTO) {
+    public ResponseEntity<List<PatientResponseDTO>> getAll(@Valid SearchPatientsRequestDTO requestDTO) {
         List<Patient> patients = getAllPatients.getAll(mapper.toQuery(requestDTO));
         return ResponseEntity.status(HttpStatus.OK)
                 .body(patients

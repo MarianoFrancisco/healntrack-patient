@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Past;
+import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 
 public record CreatePatientRequestDTO(
@@ -22,6 +23,7 @@ public record CreatePatientRequestDTO(
         LocalDate birthDate,
 
         @NotBlank(message = "El género es obligatorio")
+        @Pattern(regexp = "MALE|FEMALE|OTHER", message = "El genero solo puede ser MALE, FEMALE u OTHER")
         String gender,
 
         @NotBlank(message = "La dirección es obligatoria")

@@ -2,11 +2,11 @@ package com.sa.healntrack.patient_service.consultation.domain.value_object;
 
 import java.math.BigDecimal;
 
-public record TotalFee(BigDecimal value) {
+public record Money(BigDecimal value) {
 
     private static final BigDecimal MIN = new BigDecimal(0.00);
     
-    public TotalFee {
+    public Money {
         if (value == null) {
             throw new IllegalArgumentException("El costo de la consulta no puede ser nulo");
         }

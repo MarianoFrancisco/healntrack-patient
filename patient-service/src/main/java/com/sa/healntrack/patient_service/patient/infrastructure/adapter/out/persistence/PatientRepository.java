@@ -52,9 +52,11 @@ public class PatientRepository implements SavePatient, ExistsPatientByCui, FindP
     @Override
     public List<Patient> findAll(GetAllPatientsQuery query) {
         Specification<PatientEntity> specs = Specification
-                .anyOf(
-                        PatientSpecs.fullNameContains(query.searchTerm()),
-                        PatientSpecs.CUIContains(query.searchTerm()));
+                .allOf(
+                        PatientSpecs.hasGender(query.gender()),
+                        Specification.anyOf(
+                                PatientSpecs.fullNameContains(query.searchTerm()),
+                                PatientSpecs.CUIContains(query.searchTerm())));
         return repository.findAll(specs)
                 .stream()
                 .map(mapper::toDomain)

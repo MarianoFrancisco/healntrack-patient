@@ -19,7 +19,7 @@ public interface PatientMapper {
                 patient.getCui().value(),
                 defaultIfNull(command.fullName(), patient.getFullName().value()),
                 patient.getBirthDate(),
-                defaultIfNull(command.gender(), patient.getGender().name()),
+                defaultIfNull(command.gender(), patient.getGender()),
                 defaultIfNull(command.address(), patient.getAddress().value()),
                 defaultIfNull(command.email(), patient.getEmail().value()),
                 defaultIfNull(command.phoneNumber(), patient.getPhoneNumber().value()),
