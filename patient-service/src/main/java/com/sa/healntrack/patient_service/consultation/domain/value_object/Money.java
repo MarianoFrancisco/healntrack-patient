@@ -8,10 +8,10 @@ public record Money(BigDecimal value) {
     
     public Money {
         if (value == null) {
-            throw new IllegalArgumentException("El costo de la consulta no puede ser nulo");
+            throw new IllegalArgumentException("El costo no puede ser nulo");
         }
         if (value.compareTo(MIN) < 0) {
-            throw new IllegalArgumentException("El costo de la consulta debe ser mayor a " + MIN);
+            throw new IllegalArgumentException("El costo debe ser mayor a " + MIN);
         }
     }
 
