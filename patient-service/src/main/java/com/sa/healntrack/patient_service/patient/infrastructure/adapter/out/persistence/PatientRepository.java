@@ -38,7 +38,7 @@ public class PatientRepository implements SavePatient, ExistsPatientByCui, FindP
 
     @Transactional(readOnly = true)
     @Override
-    public boolean exists(String cui) {
+    public boolean existsByCui(String cui) {
         return repository.existsByCui(cui);
     }
 

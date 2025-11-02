@@ -27,7 +27,7 @@ public class CreatePatientImpl implements CreatePatient {
     public Patient create(CreatePatientCommand command) {
         Patient patient = mapper.toDomain(command);
         String cui = patient.getCui().value();
-        if (existsPatientByCui.exists(cui)) {
+        if (existsPatientByCui.existsByCui(cui)) {
             throw new EntityAlreadyExistsException(
                     "Ya existe un paciente registrado con el CUI: " + cui);
         }

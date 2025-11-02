@@ -2,6 +2,6 @@ package com.sa.healntrack.patient_service.patient.application.port.out.persisten
 
 public interface ExistsPatientByCui {
 
-    boolean exists(String cui);
+    boolean existsByCui(String cui);
 
 }
