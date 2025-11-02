@@ -19,7 +19,7 @@ public class GetPatientByIdImpl implements GetPatientById {
 
     @Override
     public Patient get(UUID id) {
-        Patient patient = findPatientById.find(id)
+        Patient patient = findPatientById.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("No existe un paciente con el id: " + id));
         return patient;
     }

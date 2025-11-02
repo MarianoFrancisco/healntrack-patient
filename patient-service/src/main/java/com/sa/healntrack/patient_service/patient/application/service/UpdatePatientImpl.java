@@ -26,7 +26,7 @@ public class UpdatePatientImpl implements UpdatePatient {
 
     @Override
     public Patient update(UUID id, UpdatePatientCommand updatePatientCommand) {
-        Patient patient = findPatientById.find(id)
+        Patient patient = findPatientById.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("No existe un paciente con el id: " + id));
         Patient updatedPatient = mapper.updateDomain(updatePatientCommand, patient);
         return savePatient.save(updatedPatient);

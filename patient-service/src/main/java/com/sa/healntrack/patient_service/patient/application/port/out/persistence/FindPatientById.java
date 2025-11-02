@@ -7,6 +7,6 @@ import com.sa.healntrack.patient_service.patient.domain.Patient;
 
 public interface FindPatientById {
     
-    Optional<Patient> find(UUID id);
+    Optional<Patient> findById(UUID id);
 
 }

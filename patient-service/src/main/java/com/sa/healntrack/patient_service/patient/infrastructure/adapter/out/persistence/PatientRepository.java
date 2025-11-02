@@ -44,7 +44,7 @@ public class PatientRepository implements SavePatient, ExistsPatientByCui, FindP
 
     @Transactional(readOnly = true)
     @Override
-    public Optional<Patient> find(UUID id) {
+    public Optional<Patient> findById(UUID id) {
         return repository.findById(id).map(mapper::toDomain);
     }
 

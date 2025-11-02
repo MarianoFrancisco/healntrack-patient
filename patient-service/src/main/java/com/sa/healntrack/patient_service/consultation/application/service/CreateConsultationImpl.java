@@ -25,7 +25,7 @@ public class CreateConsultationImpl implements CreateConsultation {
     
     @Override
     public Consultation create(CreateConsultationCommand command) {
-        Patient patient = findPatientById.find(command.patientId())
+        Patient patient = findPatientById.findById(command.patientId())
                 .orElseThrow(() -> new EntityNotFoundException(
                         "No existe un paciente con el id: " + command.patientId()));
         // TODO: Doctor Validation
