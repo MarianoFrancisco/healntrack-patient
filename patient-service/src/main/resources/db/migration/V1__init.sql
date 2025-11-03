@@ -23,5 +23,5 @@ create table consultation (
     total_fee numeric(10,2) not null,
     created_at timestamp not null,
     updated_at timestamp not null,
-    constraint fk_patient foreign key(patient_id) references patient(id)
+    foreign key(patient_id) references patient(id)
 );
