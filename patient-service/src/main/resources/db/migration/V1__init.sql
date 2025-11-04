@@ -15,7 +15,7 @@ create table patient (
 create table consultation (
     id uuid primary key,
     patient_id uuid not null,
-    doctor_id uuid not null,
+    employee_id uuid not null,
     date date not null,
     reason text not null,
     diagnosis text not null,
