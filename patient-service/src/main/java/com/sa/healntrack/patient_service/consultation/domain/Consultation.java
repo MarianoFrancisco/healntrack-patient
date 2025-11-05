@@ -6,7 +6,7 @@ import java.util.UUID;
 
 import com.sa.healntrack.patient_service.consultation.domain.value_object.ConsultationId;
 import com.sa.healntrack.patient_service.consultation.domain.value_object.Diagnosis;
-import com.sa.healntrack.patient_service.consultation.domain.value_object.DoctorId;
+import com.sa.healntrack.patient_service.consultation.domain.value_object.EmployeeId;
 import com.sa.healntrack.patient_service.consultation.domain.value_object.Money;
 import com.sa.healntrack.patient_service.consultation.domain.value_object.Reason;
 import com.sa.healntrack.patient_service.consultation.domain.value_object.Treatment;
@@ -19,18 +19,18 @@ public class Consultation {
     
     private final ConsultationId id;
     private final PatientId patientId;
-    private final DoctorId doctorId;
+    private final EmployeeId employeeId;
     private final LocalDate date;
     private final Reason reason;
     private final Diagnosis diagnosis;
     private final Treatment treatment;
     private final Money totalFee;
 
-    public Consultation(UUID id, UUID patientId, UUID doctorId, LocalDate date,
+    public Consultation(UUID id, UUID patientId, UUID employeeId, LocalDate date,
             String reason, String diagnosis, String treatment, BigDecimal totalFee) {
         this.id = new ConsultationId(id);
         this.patientId = new PatientId(patientId);
-        this.doctorId = new DoctorId(doctorId);
+        this.employeeId = new EmployeeId(employeeId);
         this.date = date;
         this.reason = new Reason(reason);
         this.diagnosis = new Diagnosis(diagnosis);

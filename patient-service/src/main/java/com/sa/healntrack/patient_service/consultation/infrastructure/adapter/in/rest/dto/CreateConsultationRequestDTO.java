@@ -16,7 +16,7 @@ public record CreateConsultationRequestDTO(
         UUID patientId,
 
         @NotNull(message = "El id del doctor es obligatorio")
-        UUID doctorId,
+        UUID employeeId,
 
         @PastOrPresent(message = "La fecha no puede ser futura")
         @NotNull(message = "La fecha de consulta es obligatoria")

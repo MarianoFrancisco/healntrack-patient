@@ -7,7 +7,7 @@ import java.util.UUID;
 public record CreateConsultationCommand(
 
         UUID patientId,
-        UUID doctorId,
+        UUID employeeId,
         LocalDate date,
         String reason,
         String diagnosis,

@@ -26,7 +26,7 @@ public class ConsultationEntity {
     @Id
     private UUID id;
     private UUID patientId;
-    private UUID doctorId;
+    private UUID employeeId;
     private LocalDate date;
     private String reason;
     private String diagnosis;

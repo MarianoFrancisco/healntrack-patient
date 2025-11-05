@@ -14,10 +14,10 @@ public class ConsultationSpecs {
                 : criteriaBuilder.equal(root.get("patientId"), patientId);
     }
 
-    public static Specification<ConsultationEntity> hasDoctorId(UUID doctorId) {
-        return (root, query, criteriaBuilder) -> (doctorId == null)
+    public static Specification<ConsultationEntity> hasEmployeeId(UUID employeeId) {
+        return (root, query, criteriaBuilder) -> (employeeId == null)
                 ? null
-                : criteriaBuilder.equal(root.get("doctorId"), doctorId);
+                : criteriaBuilder.equal(root.get("employeeId"), employeeId);
     }
 
 }

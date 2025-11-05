@@ -5,7 +5,7 @@ import java.util.UUID;
 public record GetAllConsultationsQuery(
 
         UUID patientId,
-        UUID doctorId
+        UUID employeeId
 
 ) {
     

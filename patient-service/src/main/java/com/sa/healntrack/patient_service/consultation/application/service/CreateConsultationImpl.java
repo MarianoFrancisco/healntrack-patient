@@ -31,7 +31,7 @@ public class CreateConsultationImpl implements CreateConsultation {
             throw new EntityNotFoundException(
                     "No existe un paciente con el id: " + command.patientId());
         }
-        String department = getDepartment.get(command.doctorId());
+        String department = getDepartment.get(command.employeeId());
         if (department == null) {
             throw new IllegalArgumentException("El empleado no se encuentra activo");
         }

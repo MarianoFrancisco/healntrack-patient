@@ -5,6 +5,6 @@ import java.util.UUID;
 public record SearchConsultationsRequestDTO(
 
         UUID patientId,
-        UUID doctorId
+        UUID employeeId
 
 ) { }
