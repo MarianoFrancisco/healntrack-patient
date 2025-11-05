@@ -2,8 +2,8 @@ package com.sa.healntrack.patient_service.consultation.application.port.out.rest
 
 import java.util.UUID;
 
-public interface GetDepartment {
+public interface VerifyActiveDoctor {
     
-    String get(UUID id);
+    boolean verify(UUID id);
 
 }
