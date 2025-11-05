@@ -8,13 +8,9 @@ import java.util.UUID;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import com.sa.healntrack.patient_service.patient.infrastructure.adapter.out.persistence.entity.PatientEntity;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -29,9 +25,7 @@ public class ConsultationEntity {
     
     @Id
     private UUID id;
-    @ManyToOne
-    @JoinColumn(name = "patient_id")
-    private PatientEntity patient;
+    private UUID patientId;
     private UUID doctorId;
     private LocalDate date;
     private String reason;

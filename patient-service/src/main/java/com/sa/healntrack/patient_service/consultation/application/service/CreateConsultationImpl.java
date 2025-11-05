@@ -9,8 +9,7 @@ import com.sa.healntrack.patient_service.consultation.application.port.in.create
 import com.sa.healntrack.patient_service.consultation.application.port.in.create_consultation.CreateConsultationCommand;
 import com.sa.healntrack.patient_service.consultation.application.port.out.persistence.SaveConsultation;
 import com.sa.healntrack.patient_service.consultation.domain.Consultation;
-import com.sa.healntrack.patient_service.patient.application.port.out.persistence.FindPatientById;
-import com.sa.healntrack.patient_service.patient.domain.Patient;
+import com.sa.healntrack.patient_service.patient.application.port.out.persistence.ExistsPatientById;
 
 import lombok.RequiredArgsConstructor;
 
@@ -19,17 +18,18 @@ import lombok.RequiredArgsConstructor;
 @Service
 public class CreateConsultationImpl implements CreateConsultation {
 
-    private final FindPatientById findPatientById;
+    private final ExistsPatientById existsPatientById;
     private final ConsultationMapper mapper;
     private final SaveConsultation saveConsultation;
     
     @Override
     public Consultation create(CreateConsultationCommand command) {
-        Patient patient = findPatientById.findById(command.patientId())
-                .orElseThrow(() -> new EntityNotFoundException(
-                        "No existe un paciente con el id: " + command.patientId()));
-        // TODO: Doctor Validation
-        Consultation newConsultation = mapper.toDomain(command, patient);
+        boolean existsPatient = existsPatientById.existsById(command.patientId());
+        if (existsPatient) {
+            throw new EntityNotFoundException(
+                    "No existe un paciente con el id: " + command.patientId());
+        }
+        Consultation newConsultation = mapper.toDomain(command);
         Consultation consultation = saveConsultation.save(newConsultation);
         return consultation;
     }

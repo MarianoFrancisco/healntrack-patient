@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.sa.healntrack.patient_service.patient.application.port.in.get_all_patients.GetAllPatientsQuery;
 import com.sa.healntrack.patient_service.patient.application.port.out.persistence.ExistsPatientByCui;
+import com.sa.healntrack.patient_service.patient.application.port.out.persistence.ExistsPatientById;
 import com.sa.healntrack.patient_service.patient.application.port.out.persistence.FindAllPatients;
 import com.sa.healntrack.patient_service.patient.application.port.out.persistence.FindPatientById;
 import com.sa.healntrack.patient_service.patient.application.port.out.persistence.SavePatient;
@@ -24,7 +25,7 @@ import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 @Repository
-public class PatientRepository implements SavePatient, ExistsPatientByCui, FindPatientById, FindAllPatients {
+public class PatientRepository implements SavePatient, ExistsPatientByCui, FindPatientById, FindAllPatients, ExistsPatientById {
 
     private final PatientEntityRepository repository;
     private final PatientPersistenceMapper mapper;
@@ -61,6 +62,12 @@ public class PatientRepository implements SavePatient, ExistsPatientByCui, FindP
                 .stream()
                 .map(mapper::toDomain)
                 .toList();
+    }
+
+    @Transactional(readOnly = true)
+    @Override
+    public boolean existsById(UUID id) {
+        return repository.existsById(id);
     }
 
 }

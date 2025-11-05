@@ -5,14 +5,14 @@ import org.mapstruct.Mapping;
 
 import com.sa.healntrack.patient_service.consultation.domain.Consultation;
 import com.sa.healntrack.patient_service.consultation.infrastructure.adapter.out.persistence.entity.ConsultationEntity;
-import com.sa.healntrack.patient_service.patient.infrastructure.adapter.out.persistence.mapper.PatientPersistenceMapper;
 
-@Mapper(componentModel = "spring", uses = PatientPersistenceMapper.class)
+@Mapper(componentModel = "spring")
 public interface ConsultationPersistenceMapper {
 
     Consultation toDomain(ConsultationEntity entity);
 
     @Mapping(target = "id", source = "consultation.id.value")
+    @Mapping(target = "patientId", source = "consultation.patientId.value")
     @Mapping(target = "doctorId", source = "consultation.doctorId.value")
     @Mapping(target = "reason", source = "consultation.reason.value")
     @Mapping(target = "diagnosis", source = "consultation.diagnosis.value")

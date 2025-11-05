@@ -15,6 +15,7 @@ public interface ConsultationRestMapper {
     CreateConsultationCommand toDomain(CreateConsultationRequestDTO requestDTO);
 
     @Mapping(target = "id", source = "consultation.id.value")
+    @Mapping(target = "patientId", source = "consultation.patientId.value")
     @Mapping(target = "doctorId", source = "consultation.doctorId.value")
     @Mapping(target = "reason", source = "consultation.reason.value")
     @Mapping(target = "diagnosis", source = "consultation.diagnosis.value")

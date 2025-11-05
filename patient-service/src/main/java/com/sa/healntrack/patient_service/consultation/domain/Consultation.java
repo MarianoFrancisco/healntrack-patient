@@ -10,7 +10,7 @@ import com.sa.healntrack.patient_service.consultation.domain.value_object.Doctor
 import com.sa.healntrack.patient_service.consultation.domain.value_object.Money;
 import com.sa.healntrack.patient_service.consultation.domain.value_object.Reason;
 import com.sa.healntrack.patient_service.consultation.domain.value_object.Treatment;
-import com.sa.healntrack.patient_service.patient.domain.Patient;
+import com.sa.healntrack.patient_service.patient.domain.value_object.PatientId;
 
 import lombok.Getter;
 
@@ -18,7 +18,7 @@ import lombok.Getter;
 public class Consultation {
     
     private final ConsultationId id;
-    private final Patient patient;
+    private final PatientId patientId;
     private final DoctorId doctorId;
     private final LocalDate date;
     private final Reason reason;
@@ -26,10 +26,10 @@ public class Consultation {
     private final Treatment treatment;
     private final Money totalFee;
 
-    public Consultation(UUID id, Patient patient, UUID doctorId, LocalDate date,
+    public Consultation(UUID id, UUID patientId, UUID doctorId, LocalDate date,
             String reason, String diagnosis, String treatment, BigDecimal totalFee) {
         this.id = new ConsultationId(id);
-        this.patient = patient;
+        this.patientId = new PatientId(patientId);
         this.doctorId = new DoctorId(doctorId);
         this.date = date;
         this.reason = new Reason(reason);

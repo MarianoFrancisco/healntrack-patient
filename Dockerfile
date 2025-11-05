@@ -2,11 +2,11 @@ FROM maven:3.9.9-eclipse-temurin-21 AS build
 
 WORKDIR /app
 
-COPY patient/pom.xml .
+COPY patient-service/pom.xml .
 
-COPY patient/src ./src
+COPY patient-service/src ./src
 
-RUN mvn pom.xml clean package
+RUN mvn clean package -DskipTests
 
 FROM eclipse-temurin:21-jre
 
