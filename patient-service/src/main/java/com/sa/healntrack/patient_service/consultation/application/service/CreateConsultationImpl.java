@@ -27,7 +27,7 @@ public class CreateConsultationImpl implements CreateConsultation {
     @Override
     public Consultation create(CreateConsultationCommand command) {
         boolean existsPatient = existsPatientById.existsById(command.patientId());
-        if (existsPatient) {
+        if (!existsPatient) {
             throw new EntityNotFoundException(
                     "No existe un paciente con el id: " + command.patientId());
         }
