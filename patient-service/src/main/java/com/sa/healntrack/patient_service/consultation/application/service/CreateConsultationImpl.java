@@ -34,9 +34,8 @@ public class CreateConsultationImpl implements CreateConsultation {
             throw new EntityNotFoundException(
                     "No existe un medico activo con el id: " + command.employeeId());
         }
-        Consultation newConsultation = mapper.toDomain(command);
-        Consultation consultation = saveConsultation.save(newConsultation);
-        return consultation;
+        Consultation consultation = mapper.toDomain(command);
+        return saveConsultation.save(consultation);
     }
 
 }
