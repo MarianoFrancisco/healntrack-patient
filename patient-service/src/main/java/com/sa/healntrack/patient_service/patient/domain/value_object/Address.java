@@ -9,7 +9,7 @@ public record Address(String value) {
             throw new IllegalArgumentException("La direccion no puede ser nula");
         }
         if (value.trim().length() < MIN_LENGTH) {
-            throw new IllegalArgumentException("El tratamiento debe superar los " + MIN_LENGTH + " caracteres");
+            throw new IllegalArgumentException("La direccion debe superar los " + MIN_LENGTH + " caracteres");
         }
     }
     

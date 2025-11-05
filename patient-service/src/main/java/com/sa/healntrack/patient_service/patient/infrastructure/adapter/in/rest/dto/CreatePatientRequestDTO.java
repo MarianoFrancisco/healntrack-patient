@@ -27,6 +27,7 @@ public record CreatePatientRequestDTO(
         String gender,
 
         @NotBlank(message = "La dirección es obligatoria")
+        @Size(min = 5, message = "La dirección debe superar los {min} caracteres")
         String address,
 
         @NotBlank(message = "El email es obligatorio")
