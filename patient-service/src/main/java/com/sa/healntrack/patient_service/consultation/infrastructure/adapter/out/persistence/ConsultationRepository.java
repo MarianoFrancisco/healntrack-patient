@@ -38,7 +38,10 @@ public class ConsultationRepository implements SaveConsultation, FindAllConsulta
     public List<Consultation> findAll(GetAllConsultationsQuery query) {
         Specification<ConsultationEntity> specs = Specification.allOf(
                 ConsultationSpecs.hasPatientId(query.patientId()),
-                ConsultationSpecs.hasEmployeeId(query.employeeId()));
+                ConsultationSpecs.hasEmployeeId(query.employeeId()),
+                ConsultationSpecs.dateFrom(query.dateFrom()),
+                ConsultationSpecs.dateTo(query.dateTo())
+        );
         return repository.findAll(specs).stream()
                 .map(mapper::toDomain)
                 .toList();
