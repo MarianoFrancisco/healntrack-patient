@@ -7,6 +7,7 @@ import com.sa.healntrack.patient_service.common.application.exception.EntityNotF
 import com.sa.healntrack.patient_service.consultation.application.mapper.ConsultationMapper;
 import com.sa.healntrack.patient_service.consultation.application.port.in.create_consultation.CreateConsultation;
 import com.sa.healntrack.patient_service.consultation.application.port.in.create_consultation.CreateConsultationCommand;
+import com.sa.healntrack.patient_service.consultation.application.port.out.messaging.PublishConsultationRegistered;
 import com.sa.healntrack.patient_service.consultation.application.port.out.persistence.SaveConsultation;
 import com.sa.healntrack.patient_service.consultation.application.port.out.rest.employee.VerifyActiveDoctor;
 import com.sa.healntrack.patient_service.consultation.domain.Consultation;
@@ -23,6 +24,7 @@ public class CreateConsultationImpl implements CreateConsultation {
     private final ConsultationMapper mapper;
     private final SaveConsultation saveConsultation;
     private final VerifyActiveDoctor verifyActiveDoctor;
+    private final PublishConsultationRegistered publishConsultationRegistered;
     
     @Override
     public Consultation create(CreateConsultationCommand command) {
@@ -35,7 +37,9 @@ public class CreateConsultationImpl implements CreateConsultation {
                     "No existe un medico activo con el id: " + command.employeeId());
         }
         Consultation consultation = mapper.toDomain(command);
-        return saveConsultation.save(consultation);
+        Consultation consultationSaved = saveConsultation.save(consultation);
+        publishConsultationRegistered.publishRegisteredMessage(consultationSaved);
+        return consultationSaved;
     }
 
 }

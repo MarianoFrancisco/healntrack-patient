@@ -7,6 +7,7 @@ import com.sa.healntrack.patient_service.common.application.exception.EntityAlre
 import com.sa.healntrack.patient_service.patient.application.mapper.PatientMapper;
 import com.sa.healntrack.patient_service.patient.application.port.in.create_patient.CreatePatient;
 import com.sa.healntrack.patient_service.patient.application.port.in.create_patient.CreatePatientCommand;
+import com.sa.healntrack.patient_service.patient.application.port.out.messaging.PublishPatientCreated;
 import com.sa.healntrack.patient_service.patient.application.port.out.persistence.ExistsPatientByCui;
 import com.sa.healntrack.patient_service.patient.application.port.out.persistence.SavePatient;
 import com.sa.healntrack.patient_service.patient.domain.Patient;
@@ -22,6 +23,7 @@ public class CreatePatientImpl implements CreatePatient {
     private final PatientMapper mapper;
     private final ExistsPatientByCui existsPatientByCui;
     private final SavePatient savePatient;
+    private final PublishPatientCreated publishPatientCreated;
 
     @Override
     public Patient create(CreatePatientCommand command) {
@@ -31,7 +33,9 @@ public class CreatePatientImpl implements CreatePatient {
             throw new EntityAlreadyExistsException(
                     "Ya existe un paciente registrado con el CUI: " + cui);
         }
-        return savePatient.save(patient);
+        Patient patientSaved = savePatient.save(patient);
+        publishPatientCreated.publishCreatedMessage(patientSaved);
+        return patientSaved;
     }
 
 }
